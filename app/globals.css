@@ -2,26 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #fbbf24;
+  --background-color: #f3f4f6;
+  --text-color: #1f2937;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@layer components {
+  .trump-card-game {
+    @apply max-w-4xl mx-auto p-6 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl shadow-lg;
+  }
+
+  .game-title {
+    @apply text-4xl font-bold text-center text-blue-800 mb-8;
+  }
+
+  .game-setup {
+    @apply max-w-md mx-auto mt-10 p-6 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl shadow-lg;
+  }
+
+  .player-input {
+    @apply w-full p-2 mb-4 rounded border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .start-button {
+    @apply w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded transition duration-300;
+  }
+
+  .game-play {
+    @apply space-y-8;
+  }
+
+  .player-cards {
+    @apply flex flex-col md:flex-row justify-between mb-8 gap-4;
+  }
+
+  .player-card {
+    @apply w-full md:w-5/12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg p-4 shadow-md transition duration-300;
+  }
+
+  .player-card.active {
+    @apply ring-4 ring-yellow-400;
+  }
+
+  .card-content {
+    @apply bg-white rounded-lg p-4;
+  }
+
+  .card-name {
+    @apply font-bold text-lg mb-2 text-blue-800;
+  }
+
+  .card-stat {
+    @apply flex justify-between mb-2 text-sm;
+  }
+
+  .card-stat span:first-child {
+    @apply font-semibold text-blue-600;
+  }
+
+  .card-stat span:last-child {
+    @apply text-blue-800;
+  }
+
+  .card-back {
+    @apply h-64 flex items-center justify-center bg-blue-200 rounded-lg;
+  }
+
+  .card-back p {
+    @apply text-2xl font-bold text-blue-800;
+  }
+
+  .flip-button {
+    @apply mt-4 bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-4 rounded transition duration-300;
+  }
+
+  .stat-selection {
+    @apply text-center mb-8;
+  }
+
+  .turn-indicator {
+    @apply text-2xl font-bold text-blue-800 mb-4;
+  }
+
+  .stat-buttons {
+    @apply flex flex-wrap justify-center gap-2;
+  }
+
+  .stat-button {
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300;
+  }
+
+  .round-result {
+    @apply bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded;
+  }
+
+  .player-results {
+    @apply mt-2 flex justify-between;
+  }
+
+  .deck-sizes {
+    @apply flex justify-between text-lg font-semibold text-blue-800;
+  }
+
+  .game-over {
+    @apply mt-8 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded;
+  }
+
+  .game-over h2 {
+    @apply text-3xl font-bold text-center;
   }
 }
